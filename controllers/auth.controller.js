@@ -19,7 +19,7 @@ export const signUp =  async(req,res,next)=>{
 
         if(existingUser){
             const error = new Error("User already exists");
-            error.statusCode = 400;
+            error.statusCode = 409;
             throw error;
         }
 
