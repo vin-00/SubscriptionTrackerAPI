@@ -8,6 +8,8 @@ import subscriptionRouter from './routes/subscriptions.routes.js';
 import authRouter from './routes/auth.routes.js';
 import userRouter from './routes/user.routes.js';
 
+import arcjetMiddleware from './middlewares/arcjet.middleware.js';
+
 import errorMiddleware from './middlewares/error.middleware.js';
 
 import connectToDatabase from './database/mongodb.js';
@@ -20,6 +22,8 @@ app.use(express.json());
 // To handle url encoded data
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
+
+app.use(arcjetMiddleware);
 
 app.use("/api/v1/auth",authRouter);
 app.use("/api/v1/users",userRouter);
